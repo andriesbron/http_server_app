@@ -23,9 +23,9 @@ class base_app:
     def get_headers(self):
         return self._headers
 
-    def register_call_back(self, reference):
+    def register_call_back(self, url):
         id=uuid.uuid4()
-        self._call_backs[str(id)] = {'url':reference}
+        self._call_backs[str(id)] = {'url':url}
         
         return id
 
