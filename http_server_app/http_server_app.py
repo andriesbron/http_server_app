@@ -25,7 +25,9 @@ class base_app:
 
     def register_call_back(self, reference):
         id=uuid.uuid4()
-        self._call_backs[str(id)] = {'reference':reference}
+        self._call_backs[str(id)] = {'url':reference}
+        
+        return id
 
     def get_call_backs(self):
         return self._call_backs
