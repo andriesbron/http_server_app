@@ -27,7 +27,7 @@ class base_app:
         id=uuid.uuid4()
         self._call_backs[str(id)] = {'url':url}
         
-        return id
+        return str(id)
 
     def get_call_backs(self):
         return self._call_backs
