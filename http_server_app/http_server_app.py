@@ -24,10 +24,10 @@ class base_app:
         return self._headers
 
     def register_call_back(self, url):
-        id=uuid.uuid4()
-        self._call_backs[str(id)] = {'url':url}
+        id=str(uuid.uuid4())
+        self._call_backs[id] = {'url':url}
         
-        return str(id)
+        return id
 
     def get_call_backs(self):
         return self._call_backs
