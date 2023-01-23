@@ -26,7 +26,6 @@ class base_app:
     def register_call_back(self, url):
         id=str(uuid.uuid4())
         self._call_backs[id] = {'url':url}
-        
         return id
 
     def get_call_backs(self):
@@ -147,6 +146,26 @@ class http_server_app:
     Basic server class, does nothing else than checking that an application has been provided and runs the forever instance.'''
     def __init__(self) -> None:
         self._port=8800
+        try:
+            self._host_name=socket.gethostname()
+        except:
+            self._host_name=platform.node()
+         
+        try:
+            self._ip=socket.gethostbyname(self._host_name)
+        except:
+            self._ip="localhost"
+            print("Bound to localhost, could not retrieve your ip address,")
+            print("use set_ip to manually set the ip address and optionally set a port.")
+            
+        self.set_ip(self._ip, self._port)
+            
+    def set_ip(self, ip, port=8800):
+        self._ip=ip
+        self._port=port
+        
+    def network(self):
+        return {"ip":self._ip, "port":self._port, "host_name":self._host_name}
 
     def set_listening_port(self, port):
         self._port=port
